@@ -1,6 +1,6 @@
 SHELL := /bin/bash # to enable source command in run_app
 
-MODULE=weevenetwork/boilerplate
+MODULE=weevenetwork/serial-input
 VERSION_NAME=v1.0.0
 
 lint:
@@ -17,7 +17,7 @@ create_image:
 .phony: create_image
 
 run_image:
-	docker run -p 80:80 --rm --env-file=./.env ${MODULE}:${VERSION_NAME}
+	docker run --device=/dev/ttyUSB0  --rm --env-file=./config.env ${MODULE}:latest
 .phony: run_image
 
 run_docker_compose:

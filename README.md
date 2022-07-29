@@ -1,96 +1,63 @@
-# Python Input Module Boilerplate
+# Serial Input
 
-|              |                                                                  |
-| ------------ | ---------------------------------------------------------------- |
-| name         | Python Input Module Boilerplate                             |
-| version      | v1.0.0                                                           |
-| GitHub       | [python-input-module-boilerplate](https://github.com/weeve-modules/python-ingress-module-boilerplate) |
-| authors      | Jakub Grzelak, Nithin Saai                                       |
+
+|              |                                                                                     |
+| ------------ |-------------------------------------------------------------------------------------|
+| name         | Serial Input                                                                      |
+| version      | v1.0.0                                                                              |
+| docker image | [weevenetwork/serial-input](https://hub.docker.com/r/weevenetwork/serial-input) |
+| tags         | Python, Flask, Docker, Weeve                                                        |
+| authors      | Ghassen Barbouchi                                                                   |
 
 ***
 ## Table of Content
-
-- [Python Input Module Boilerplate](#python-input-module-boilerplate)
+- [Serial Input](#serial-input)
   - [Table of Content](#table-of-content)
   - [Description](#description)
-  - [Directory Structure](#directory-structure)
-    - [File Tree](#file-tree)
-  - [Module Variables](#module-variables)
-  - [As a module developer](#as-a-module-developer)
+    - [Features](#features)
+  - [Environment Variables](#environment-variables)
+    - [Module Specific](#module-specific)
+    - [Set by the weeve Agent on the edge-node](#set-by-the-weeve-agent-on-the-edge-node)
   - [Dependencies](#dependencies)
+
+
 ***
 
-## Description 
+## Description
 
-This is a Python Input Boilerplate module and it serves as a starting point for developers to build input modules for weeve platform and data services.
-Navigate to [As a module developer](#as-a-module-developer) to learn how to use this module. You can also explore our weeve documentation on [weeve Modules](https://docs.weeve.engineering/concepts/edge-applications/weeve-modules) and [module tutorials](https://docs.weeve.engineering/guides/how-to-create-a-weeve-module) to learn more details. 
+This module reads data input from specified serial interface.
 
-## Directory Structure
+### Features
+1. Open serial of a host machine
+2. Read received serial data
+3. Forward received serial data
 
-Most important resources:
+## Environment Variables
 
-| name              | description                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------------ |
-| src               | All source code related to the module (API and module code).                                           |
-| src/main.py       | Entry-point for the module.                                                                            |
-| src/api           | Code responsible for setting module's API and communication with weeve ecosystem.                      |
-| src/module        | Code related to the module's business logic. This is working directory for module developers.          |
-| docker            | All resources related to Docker (Dockerfile, docker-entrypoint.sh, docker-compose.yml).                |
-| example.env       | Holds examples of environment variables for running the module.                                        |
-| requirements.txt  | A list of module dependencies.                                                                         |
-| Module.yaml       | Module's YAML file that is later used by weeve platform Data Service Designer                          |
+### Module Specific
+The following module configurations can be provided in a data service designer section on weeve platform:
 
-### File Tree
+| Name                | Environment Variables | Type    | Description               |Mandathory/Option|
+|---------------------|-----------------------|---------|---------------------------|-----------------|
+| Serial Port         | PORT                  | string  | eg: /dev/ttyUSB0          |   Mandathory    |
+| Serial Baud_Rate    | BAUD_RATE             | integer | The data baud rate        |   Mandathory    |
+| Number of data bits | DATA_BITS             | string  | Port number for tbe broker|    Option       |
+| Parity              | PARITY                | string  | Enable parity checking    |    Option       |
+| Stop bits           | STOP_BITS             | string  | Number of stop bits       |    Option       |
 
-```bash
-├── src
-│   ├── api
-│   │   ├── __init__.py
-│   │   ├── log.py # log configurations
-│   │   └── send_data.py # sends data to the next module
-│   ├── module
-│   │   └── main.py # [*] main logic for the module
-│   └── main.py # module entrypoint
-├── docker
-│   ├── .dockerignore
-│   ├── docker-compose.yml
-│   ├── docker-entrypoint.sh
-│   └── Dockerfile
-├── example.env # sample environment variables for the module
-├── Module.yaml # used by weeve platform to generate resource in Data Service Designer section
-├── makefile
-├── README.md
-├── example.README.md # README template for writing module documentation
-└── requirements.txt # module dependencies, used for building Docker image
-```
+Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
 
-## Module Variables
+### Set by the weeve Agent on the edge-node
 
-There are 4 module variables that are required by each module to correctly function within weeve ecosystem. In development, these variables can overridden for testing purposes. In production, these variables are set by weeve Agent.
+| Environment Variables | type   | Description                            |
+|-----------------------| ------ | -------------------------------------- |
+| EGRESS_URL            | string | HTTP ReST endpoint for the next module |
+| MODULE_NAME           | string | Name of the module                     |
 
-| Environment Variables | type   | Description                                       |
-| --------------------- | ------ | ------------------------------------------------- |
-| MODULE_NAME           | string | Name of the module                                |
-| MODULE_TYPE           | string | Type of the module (Input, Processing, Output)    |
-| LOG_LEVEL             | string | Allowed log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL. Refer to `logging` package documentation. |
-| EGRESS_URLS           | string | HTTP ReST endpoint for the next module            |
-
-## As a module developer
-
-RECOMMENDED:
-Make sure you have [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-
-A module developer needs to add all the configuration and business logic.
-
-All the module logic can be written in the module package in `src/module` directory.
-
-   * The files can me modified for the module
-      2. `module/module.py`
-         * The function `module_main` should input/read data for this module.
-         * All the business logic about modules are written here.
 
 ## Dependencies
-
-The following are module dependencies:
-
-* requests
+```
+requests
+python-dotenv
+pyserial
+```

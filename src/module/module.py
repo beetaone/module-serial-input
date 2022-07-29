@@ -7,7 +7,9 @@ Edit this file to implement your module.
 
 from logging import getLogger
 from api.send_data import send_data
-
+from os import getenv
+import serial
+import json
 log = getLogger("module")
 
 
@@ -19,23 +21,29 @@ def module_main():
 
     log.debug("Inputting data...")
 
+    parity_dict = {
+       "None" : serial.PARITY_NONE,
+       "Even" : serial.PARITY_EVEN,
+       "Odd"  : serial.PARITY_ODD
+    }
+    if str(getenv('PARITY')) not in parity_dict:
+        raise Exception("Invalid parity")
     try:
-        # YOUR CODE HERE
-        # ----------------------------------------------------------------
+        #  open the serial port and get the serial port object
+        ser = serial.Serial(getenv('PORT') ,getenv('BAUD_RATE'), timeout=1,
+        bytesize=int(getenv('DATA_BITS')),parity=parity_dict.get(str(getenv('PARITY'))),
+        stopbits=float(getenv('STOP_BITS')))
 
-        # input_data are data received by the module
-        input_data = None
-
-
-        # ----------------------------------------------------------------
-
-        # send data to the next module
-        send_error = send_data(input_data)
-
-        if send_error:
-            log.error(send_error)
-        else:
-            log.debug("Data sent sucessfully.")
-
-    except Exception as e:
-        log.error(f"Exception in the module business logic: {e}")
+        while True:
+            #  read json payload
+            ser.reset_input_buffer()
+            data = ser.readline().decode("ISO-8859-1")
+            dict_json = json.loads(str(data))
+            print("serial data  ",dict_json)
+            sent=send_data(dict_json)
+            if sent:
+                log.error(sent)
+            else:
+                log.debug("Data sent sucessfully.")
+    except json.JSONDecodeError as err:
+        return None, f"Unable to perform the module logic: {err}"
