@@ -57,6 +57,6 @@ Other features required for establishing the inter-container communication betwe
 
 ## Dependencies
 ```
-requests
+requests==2.27.1
 pyserial
 ```

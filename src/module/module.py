@@ -44,7 +44,6 @@ def module_main():
             if send_error:
                log.error("error ",send_error)
             else:
-               log.debug("Data sent sucessfully.")
-
+               log.debug("Data sent successfully.")
     except json.JSONDecodeError as err:
         return None, f"Unable to perform the module logic: {err}"
