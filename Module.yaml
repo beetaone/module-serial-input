@@ -57,9 +57,6 @@ envs:                                   # Array of environment variables that wi
      - 1
      - 1.5
      - 2
-ports:                                  # Array of ports that will be exposed by the module.
-  - container: 8080                     # Port number from the container.
-    host: 8080                          # Port number to map on the host.
 tags:                                   # Array of tags.
   - 'Serial'
   - 'Input'

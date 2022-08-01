@@ -30,7 +30,7 @@ def module_main():
         raise Exception("Invalid parity")
     try:
         #  open the serial port and get the serial port object
-        ser = serial.Serial(getenv('PORT') ,getenv('BAUD_RATE'), timeout=1,
+        ser = serial.Serial(str(getenv('PORT')) ,int(getenv('BAUD_RATE')), timeout=1,
         bytesize=int(getenv('DATA_BITS')),parity=parity_dict.get(str(getenv('PARITY'))),
         stopbits=float(getenv('STOP_BITS')))
 
