@@ -38,13 +38,13 @@ def module_main():
             #  read json payload
             ser.reset_input_buffer()
             data = ser.readline().decode("ISO-8859-1")
-            dict_json = json.loads(data)
-            log.debug(dict_json)
-            send_error=send_data(dict_json)
-            if send_error:
-               log.error("error ",send_error)
+            print(type(ser.readline().decode("ISO-8859-1")))
+            dict_json = json.loads(str(data))
+            print("serial data  ",dict_json)
+            sent=send_data(dict_json)
+            if sent:
+                log.error(sent)
             else:
-               log.debug("Data sent sucessfully.")
-
+                log.debug("Data sent sucessfully.")
     except json.JSONDecodeError as err:
         return None, f"Unable to perform the module logic: {err}"

@@ -58,6 +58,5 @@ Other features required for establishing the inter-container communication betwe
 ## Dependencies
 ```
 requests
-python-dotenv
 pyserial
 ```
