@@ -17,7 +17,7 @@ create_image:
 .phony: create_image
 
 run_image:
-	docker run --device=/dev/ttyUSB0  --rm --env-file=./config.env ${MODULE}:${VERSION_NAME} 
+	docker run --device=/dev/ttyUSB0  --rm --env-file=./config.env ${MODULE}:${VERSION_NAME}
 .phony: run_image
 
 run_docker_compose:

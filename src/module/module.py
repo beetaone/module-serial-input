@@ -33,7 +33,7 @@ def module_main():
         ser = serial.Serial(str(getenv('PORT')) ,int(getenv('BAUD_RATE')), timeout=1,
         bytesize=int(getenv('DATA_BITS')),parity=parity_dict.get(str(getenv('PARITY'))),
         stopbits=float(getenv('STOP_BITS')))
-
+        
         while True:
             #  read json payload
             ser.reset_input_buffer()
