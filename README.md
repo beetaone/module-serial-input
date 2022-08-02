@@ -1,17 +1,17 @@
-# Serial Ingress
+# Serial Input
 
 
 |              |                                                                                     |
 | ------------ |-------------------------------------------------------------------------------------|
-| name         | Serial Ingress                                                                      |
-| version      | v0.1.0                                                                              |
-| docker image | [weevenetwork/serial-ingress](https://hub.docker.com/r/weevenetwork/serial-ingress) |
+| name         | Serial Input                                                                      |
+| version      | v1.0.0                                                                              |
+| docker image | [weevenetwork/serial-input](https://hub.docker.com/r/weevenetwork/serial-input) |
 | tags         | Python, Flask, Docker, Weeve                                                        |
 | authors      | Ghassen Barbouchi                                                                   |
 
 ***
 ## Table of Content
-- [Serial Ingress](#serial-ingress)
+- [Serial Input](#serial-input)
   - [Table of Content](#table-of-content)
   - [Description](#description)
     - [Features](#features)
@@ -57,7 +57,6 @@ Other features required for establishing the inter-container communication betwe
 
 ## Dependencies
 ```
-requests
-python-dotenv
+requests==2.27.1
 pyserial
 ```
