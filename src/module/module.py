@@ -33,7 +33,7 @@ def module_main():
         ser = serial.Serial(str(getenv('PORT')) ,int(getenv('BAUD_RATE')), timeout=1,
         bytesize=int(getenv('DATA_BITS')),parity=parity_dict.get(str(getenv('PARITY'))),
         stopbits=float(getenv('STOP_BITS')))
-        
+
         while True:
             #  read json payload
             ser.reset_input_buffer()
@@ -42,8 +42,8 @@ def module_main():
             log.debug(dict_json)
             send_error=send_data(dict_json)
             if send_error:
-               log.error("error ",send_error)
+                log.error(send_error)
             else:
-               log.debug("Data sent successfully.")
+                log.debug("Data sent successfully.")
     except json.JSONDecodeError as err:
-        return None, f"Unable to perform the module logic: {err}"
+        log.error(f"Exception in the module business logic : {err}")
