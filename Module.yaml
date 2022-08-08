@@ -57,6 +57,8 @@ envs:                                   # Array of environment variables that wi
      - 1
      - 1.5
      - 2
+ envDevices:
+      - PORT
 tags:                                   # Array of tags.
   - 'Serial'
   - 'Input'
