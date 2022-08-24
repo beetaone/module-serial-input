@@ -9,6 +9,7 @@ from logging import getLogger
 from api.send_data import send_data
 from os import getenv
 import serial
+import time
 import json
 log = getLogger("module")
 
@@ -40,10 +41,13 @@ def module_main():
             data = ser.readline().decode("ISO-8859-1")
             dict_json = json.loads(data)
             log.debug(dict_json)
+            print(dict_json)
+            time.sleep(2000)
             send_error=send_data(dict_json)
             if send_error:
                 log.error(send_error)
             else:
                 log.debug("Data sent successfully.")
+          
     except json.JSONDecodeError as err:
         log.error(f"Exception in the module business logic : {err}")
