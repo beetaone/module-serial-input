@@ -39,11 +39,11 @@ def module_main():
             ser.reset_input_buffer()
             data = ser.readline().decode("ISO-8859-1")
             dict_json = json.loads(data)
-            log.debug(dict_json)
             send_error=send_data(dict_json)
             if send_error:
                 log.error(send_error)
             else:
                 log.debug("Data sent successfully.")
+          
     except json.JSONDecodeError as err:
         log.error(f"Exception in the module business logic : {err}")
