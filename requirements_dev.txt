@@ -1,4 +1,4 @@
 requests==2.27.1
 flake8==4.0.1
 black==22.3.0
-pyserial
+pyserial==3.5

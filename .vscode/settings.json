@@ -3,5 +3,5 @@
     "python.linting.flake8Enabled": true,
     "cSpell.words": [
         "WEEVE"
-    ],
+    ]
 }
