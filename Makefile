@@ -3,6 +3,10 @@ SHELL := /bin/bash # to enable source command in run_app
 MODULE=weevenetwork/serial-input
 VERSION_NAME=v1.0.0
 
+install_dev:
+	python3 -m pip install -r requirements_dev.txt
+.PHONY: install_dev
+
 lint:
 	black src/
 	flake8 src/
