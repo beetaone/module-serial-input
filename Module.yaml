@@ -17,28 +17,32 @@ envs:                                   # Array of environment variables that wi
     description: The USB port           # Description/helper text for the field.
     value: '/dev/ttyUSB0'               # Value to be set in the environment variables.
     type: 'text'                        # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    options: []
+    dependencies: []
   - name: Baud Rate                     # name of the field to be displayed on the UI.
     key: BAUD_RATE                      # key to set in the environment variables.
     description: The baud rate          # Description/helper text for the field.
     value: '115200'                     # Value to be set in the environment variables.
     type: 'select'                      # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options:                            # Options for the field if it is a select or multiple select. An array of string options
-     - 1200
-     - 2400
-     - 4800
-     - 9600
-     - 57600
-     - 115200
+     - '1200'
+     - '2400'
+     - '4800'
+     - '9600'
+     - '57600'
+     - '115200'
+    dependencies: []
   - name: Data Bits                   # name of the field to be displayed on the UI.
     key: DATA_BITS                    # key to set in the environment variables.
     description: Number of data bits (optional)    # Description/helper text for the field.
     value: '8'                         # Value to be set in the environment variables.
     type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options:                          # Options for the field if it is a select or multiple select. An array of string options
-     - 5
-     - 6
-     - 7
-     - 8
+     - '5'
+     - '6'
+     - '7'
+     - '8'
+    dependencies: []
   - name: Parity                      # name of the field to be displayed on the UI.
     key: PARITY                       # key to set in the environment variables.
     description: Enable parity checking (optional)      # Description/helper text for the field.
@@ -48,15 +52,22 @@ envs:                                   # Array of environment variables that wi
      - 'None'
      - 'Even'
      - 'Odd'
+    dependencies: []
   - name: Stop Bits                 # name of the field to be displayed on the UI.
     key: STOP_BITS                  # key to set in the environment variables.
     description: Number of stop bits (optional)   # Description/helper text for the field.
     value: '1'                         # Value to be set in the environment variables.
     type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
     options:                          # Options for the field if it is a select or multiple select. An array of string options
-     - 1
-     - 1.5
-     - 2
+     - '1'
+     - '1.5'
+     - '2'
+    dependencies: []
+ports: []
+envPorts: []
+mounts: []
+envMounts: []
+devices: []
 envDevices:
       - PORT
 tags:                                   # Array of tags.
