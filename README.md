@@ -3,7 +3,7 @@
 |              |                                                                                 |
 | ------------ | ------------------------------------------------------------------------------- |
 | name         | Serial Input                                                                    |
-| version      | v1.0.0                                                                          |
+| version      | v1.0.1                                                                          |
 | docker image | [weevenetwork/serial-input](https://hub.docker.com/r/weevenetwork/serial-input) |
 | tags         | Python, Flask, Docker, Weeve                                                    |
 | authors      | Ghassen Barbouchi                                                               |
