@@ -4,8 +4,8 @@
 | ------------ | ------------------------------------------------------------------------------- |
 | name         | Serial Input                                                                    |
 | version      | v1.0.1                                                                          |
-| docker image | [weevenetwork/serial-input](https://hub.docker.com/r/weevenetwork/serial-input) |
-| tags         | Python, Flask, Docker, Weeve                                                    |
+| docker image | [beetaone/serial-input](https://hub.docker.com/r/beetaone/serial-input) |
+| tags         | Python, Flask, Docker, beetaone                                                    |
 | authors      | Ghassen Barbouchi                                                               |
 
 ---
@@ -18,7 +18,7 @@
         -   [Features](#features)
     -   [Environment Variables](#environment-variables)
         -   [Module Specific](#module-specific)
-        -   [Set by the weeve Agent on the edge-node](#set-by-the-weeve-agent-on-the-edge-node)
+        -   [Set by the beetaone Agent on the edge-node](#set-by-the-beetaone-agent-on-the-edge-node)
     -   [Dependencies](#dependencies)
 
 ---
@@ -37,7 +37,7 @@ This module reads data input from specified serial interface.
 
 ### Module Specific
 
-The following module configurations can be provided in a data service designer section on weeve platform:
+The following module configurations can be provided in a data service designer section on beetaone platform:
 
 | Name                | Environment Variables | Type    | Description                | Mandathory/Option |
 | ------------------- | --------------------- | ------- | -------------------------- | ----------------- |
@@ -47,9 +47,9 @@ The following module configurations can be provided in a data service designer s
 | Parity              | PARITY                | string  | Enable parity checking     | Option            |
 | Stop bits           | STOP_BITS             | string  | Number of stop bits        | Option            |
 
-Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
+Other features required for establishing the inter-container communication between modules in a data service are set by beetaone agent.
 
-### Set by the weeve Agent on the edge-node
+### Set by the beetaone Agent on the edge-node
 
 | Environment Variables | type   | Description                            |
 | --------------------- | ------ | -------------------------------------- |

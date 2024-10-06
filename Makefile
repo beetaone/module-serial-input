@@ -1,6 +1,6 @@
 SHELL := /bin/bash # to enable source command in run_app
 
-MODULE=weevenetwork/serial-input
+MODULE=beetaone/serial-input
 VERSION_NAME=v1.0.0
 
 install_dev:
@@ -47,4 +47,4 @@ run_listener:
 	-e LOG_HTTP_HEADERS=true \
 	--name listener \
 	jmalloc/echo-server
-.PHONY: run_listener
+.PHONY: run_listenerener
